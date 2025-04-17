@@ -5,7 +5,7 @@
 ```
 git clone git@github.com:Harukakuraharu/DiagnosixTest.git
 ```
-После этого, в корневой директории необходимо создать файл *.env*, пример лежит в файле [env.example]().
+После этого, в корневой директории необходимо создать файл *.env*, пример лежит в файле [env.example](https://github.com/Harukakuraharu/DiagnosixTest/blob/main/.env.example).
 
 ## Команда для сборки и запуска приложения
 ```

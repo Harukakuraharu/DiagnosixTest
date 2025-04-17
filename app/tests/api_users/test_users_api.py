@@ -77,7 +77,7 @@ async def test_get_user_not_auth(client: AsyncClient):
 
 
 async def test_get_user_with_invalid_token(client: AsyncClient, factory):
-    """"""
+    """Get info about user with invalid token"""
     password = "string123"
     user = await factory(fc.UserFactory, password=password)
     data = {
