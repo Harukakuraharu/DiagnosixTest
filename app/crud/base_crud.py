@@ -51,6 +51,6 @@ class SQLAlchemyCrud(BaseCrud):
         user = await self.session.scalar(stmt)
         if user is None:
             raise HTTPException(
-                status.HTTP_404_NOT_FOUND, f"{email} not found"
+                status.HTTP_404_NOT_FOUND, "User is not exists"
             )
         return user

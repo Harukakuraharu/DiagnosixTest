@@ -19,7 +19,6 @@ class UserService:
     async def create_user(self, data: users_schemas.UserCreate) -> models.User:
         """Execution of the request for create user"""
         data.password = security.hash_password(data.password)
-
         user = await self.crud.create_item(data.model_dump())
         await self.session.commit()
         await self.session.refresh(user)
