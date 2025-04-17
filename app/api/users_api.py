@@ -29,7 +29,7 @@ async def login(
 
 @user_routers.get("/me/", response_model=users_schemas.UserResponse)
 async def get_users_me(
-    current_user: dependency.GetCurrentUserDependency,
+    current_user: dependency.CurrentUserDependency,
 ):
     """Get info about current user"""
     return current_user

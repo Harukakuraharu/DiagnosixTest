@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Any, Literal, Sequence
+from typing import Any
 
 import sqlalchemy as sa
 from fastapi import HTTPException, status
@@ -54,12 +54,3 @@ class SQLAlchemyCrud(BaseCrud):
                 status.HTTP_404_NOT_FOUND, f"{email} not found"
             )
         return user
-
-    # async def get_item_id(self, item_id: int):
-    #     stmt = sa.select(self.model).where(self.model.id == item_id)
-    #     response = await self.session.scalar(stmt)
-    #     if response is None:
-    #         raise HTTPException(
-    #             status.HTTP_404_NOT_FOUND, f"{self.model.__name__} not found"
-    #         )
-    #     return response

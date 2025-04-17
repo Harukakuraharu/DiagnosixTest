@@ -1,7 +1,7 @@
 import enum
 
 from models.base import Base
-from sqlalchemy import Integer, String, false
+from sqlalchemy import Integer, String, true
 from sqlalchemy.orm import Mapped, mapped_column
 
 
@@ -18,5 +18,5 @@ class User(Base):
     email: Mapped[str] = mapped_column(String(100), unique=True)
     password: Mapped[str] = mapped_column(String(72))
     name: Mapped[str | None] = mapped_column(String(100))
-    active: Mapped[bool] = mapped_column(server_default=false())
+    active: Mapped[bool] = mapped_column(server_default=true())
     role: Mapped[UserRole] = mapped_column(default=UserRole.PATIENT)
