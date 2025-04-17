@@ -1,9 +1,23 @@
 services:
-  db:
-    image: postgres:alpine
-    container_name: db
+  backend:
+    build: ./
+    container_name: backend
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: always
+    command: /bin/sh run.sh
+    volumes:
+      - ./app:/app
     ports:
-      - "5432:5432"
+      - 80:8000
+
+  db:
+    image: postgres:16-alpine
+    container_name: db
+    restart: always
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -14,3 +28,8 @@ services:
       timeout: 5s
       retries: 5
       start_period: 3s
+    volumes:
+      - data:/var/lib/postgresql/data/
+
+volumes:
+  data:
